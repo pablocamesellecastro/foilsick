@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "target": "es5",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "types": ["node"],
+    "paths": {
+      "@/*": ["./*"],
+      "@components/*": ["./app/components/*"],
+      "@/components/*": ["./app/components/*"],
+      "@/app/components/*": ["./app/components/*"],
+      "@/zustand/*": ["./zustand/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/components/page/sidebar/team-switcher.old.tsx",
+    "app/stores/layout.tsx.old"
+  ],
+  "exclude": ["node_modules"]
+}

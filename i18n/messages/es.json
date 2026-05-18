@@ -1,0 +1,272 @@
+{
+  "Languages": {
+    "es-es": "Español",
+    "en-us": "Inglés"
+  },
+  "SwitchFullScreen": {
+    "enterFullscreen": "Pantalla completa",
+    "exitFullscreen": "Salir de pantalla completa"
+  },
+  "ThemeSelector": {
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema"
+  },
+  "AppSidebar": {
+    "abbreviation": "Pasaporte digital del edificio",
+    "general": "Vista general",
+    "info": "Resumen",
+    "levels": "Macroobjetivos",
+    "greenhouse-gas-emissions": "Emisiones de gases de efecto invernadero",
+    "greenhouse-overview": "Resumen",
+    "materials-life-cycle": "Ciclo de vida de materiales",
+    "efficient-water-usage": "Uso eficiente del agua",
+    "healthy-spaces": "Espacios saludables y cómodos",
+    "climate-change-adaptation": "Adaptación al cambio climático",
+    "costs-and-value": "Costes y valor del ciclo de vida",
+    "energy-efficiency": "Eficiencia energética en la fase de uso",
+    "co2-emissions": "Potencial de calentamiento global",
+    "building-materials": "Lista de materiales de construcción relativos al ciclo de vida",
+    "life-cycle-scenarios": "Escenarios de vida útil, adaptabilidad y deconstrucción",
+    "construction-materials": "Residuos y materiales de construcción y demolición",
+    "life-cycle-analysis": "Análisis del ciclo de vida (ACV)",
+    "efficient-water-usage-2": "Empleo eficiente de los recursos hídricos",
+    "water-consumption": "Consumo de agua en la fase de uso",
+    "air-quality": "Calidad del aire en interiores",
+    "temp-quality": "Tiempo fuera del margen de bienestar térmico",
+    "light-quality": "Bienestar lumínico y visual",
+    "noise-quality": "Acústica y protección frente al ruido",
+    "climate-conditions": "Proyección de futuras condiciones climáticas",
+    "weather-risks": "Aumento de riesgo de fenómenos meteorológicos extremos o inundaciones",
+    "life-cycle-cost": "Coste del ciclo de vida",
+    "risk-factors": "Creación de valor y factores de riesgo"
+  },
+  "Home": {
+    "identifier": "Identificador",
+    "info": "Información general",
+    "hospitalName": "Hospital del Henares",
+    "description": "Descripción",
+    "hospitalDescription": "Centro sanitario construido por la Comunidad de Madrid que abrió sus puertas el 11 de febrero de 2008 para dar atención especializada, cercana y de la máxima calidad a los vecinos de Coslada, San Fernando de Henares, Mejorada del Campo, Loeches y Velilla de San Antonio.",
+    "usage": "Uso/elemento",
+    "building": "Edificio",
+    "dimensions": "Dimensiones",
+    "totalSurface": "Superficie total construída de {{surface}} m²",
+    "constructionYear": "Año de construcción",
+    "location": "Ubicación geográfica",
+    "address": "Avda. Marie Curie, 0. Coslada (Madrid)",
+    "viewOnMap": "Ver en mapa",
+    "hierarchy": "Jerarquía",
+    "hierarchyDescription": "En qué lugar / posición de la estructura de componentes / en qué área temática se sitúa.",
+    "certifications": "Certificaciones disponibles",
+    "downloadCertifications": "Descargar",
+    "technicalDetails": "Detalles Técnicos",
+    "blockchain": "Información en Blockchain",
+    "bexplorer": "Explorador de bloques"
+  },
+  "CardTitles": {
+    "titles": {
+      "/": "Resumen",
+      "/greenhouse-gas-emissions/co2-emissions": "Potencial de calentamiento global",
+      "/greenhouse-gas-emissions/energy-efficiency": "Eficiencia energética en la fase de uso",
+      "/materials-life-cycle/building-materials": "Lista de materiales de construcción (kg)",
+      "/materials-life-cycle/life-cycle-scenarios": "Escenarios de vida útil, adaptabilidad y deconstrucción",
+      "/materials-life-cycle/construction-materials": "Residuos y materiales de construcción y demolición",
+      "/materials-life-cycle/life-cycle-analysis": "Análisis del ciclo de vida (ACV)",
+      "/efficient-water-usage/water-consumption": "Consumo de agua en la fase de uso",
+      "/healthy-spaces/indoor-air-quality": "Calidad del aire en interiores",
+      "/healthy-spaces/noise-quality": "Acústica y protección frente al ruido",
+      "/healthy-spaces/temp-quality": "Tiempo fuera del margen de bienestar térmico",
+      "/healthy-spaces/light-quality": "Bienestar lumínico y visual",
+      "/waste-management": "Gestión de residuos"
+    },
+    "descriptions": {
+      "/": "Información general sobre el elemento",
+      "/greenhouse-gas-emissions/co2-emissions": "Emisiones de GEI generadas por los diferentes elementos involucrados en la construcción.",
+      "/greenhouse-gas-emissions/energy-efficiency": "Calificación EPC",
+      "/materials-life-cycle/building-materials": "Principales elementos de construcción. Porcentaje correspondiente al total",
+      "/materials-life-cycle/life-cycle-scenarios": "Evaluaciones semicuantitativas basadas en el ACV",
+      "/materials-life-cycle/construction-materials": "En kg/m²",
+      "/materials-life-cycle/life-cycle-analysis": "Categorías de impacto en los principales tipos de materiales. Evaluación del escenario",
+      "/efficient-water-usage/water-consumption": "Consumo realizado en m³/unidad de tiempo",
+      "/healthy-spaces/indoor-air-quality": "Métricas de calidad del aire en interiores",
+      "/healthy-spaces/noise-quality": "Métricas de acústica y protección frente al ruido",
+      "/healthy-spaces/temp-quality": "Métricas de tiempo fuera del margen de bienestar térmico",
+      "/healthy-spaces/light-quality": "Métricas de bienestar lumínico y visual",
+      "/waste-management": "Métricas de gestión de residuos"
+    }
+  },
+  "Breadcrumbs": {
+    "/": "Resumen",
+    "Levels": "Macroobjetivos",
+    "/greenhouse-gas-emissions": "Emisiones de gases de efecto invernadero",
+    "/greenhouse-gas-emissions/overview": "Resumen",
+    "/greenhouse-gas-emissions/co2-emissions": "Potencial de calentamiento global",
+    "/greenhouse-gas-emissions/energy-efficiency": "Eficiencia energética en la fase de uso",
+    "/materials-life-cycle": "Ciclo de vida de materiales",
+    "/efficient-water-usage": "Uso eficiente del agua",
+    "/efficient-water-usage/water-consumption": "Consumo de agua en la fase de uso",
+    "/healthy-spaces": "Espacios saludables y cómodos",
+    "/climate-change-adaptation": "Adaptación al cambio climático",
+    "/costs-and-value": "Costes y valor del ciclo de vida"
+  },
+  "GoBackButton": {
+    "back": "Volver"
+  },
+  "Co2Chart": {
+    "labels": {
+      "electricity": "Electricidad e Iluminación",
+      "plumbing": "Fontanería",
+      "civilWorks": "Obra Civil",
+      "insulation": "Aislamiento",
+      "masonry": "Albañilería (tabiques)",
+      "architecture": "Arquitectura",
+      "exteriorCarpentry": "Carpintería Exterior",
+      "interiorCarpentry": "Carpintería Interior",
+      "foundations": "Cimentaciones y Contenciones",
+      "roofing": "Cubiertas",
+      "structure": "Estructura",
+      "falseCeiling": "Falso techo",
+      "artificialStone": "Piedra artificial",
+      "paintingCoating": "Pintura y revestimiento",
+      "sewerage": "Saneamiento y Pluviales",
+      "flooring": "Solados",
+      "urbanization": "Urbanización",
+      "glazing": "Vidriería",
+      "total": "% del total"
+    }
+  },
+  "EnergyConsuptionChart": {
+    "graphic": "Obtener gráfica energética",
+    "nodata": "No hay datos disponibles",
+    "select2": "Por favor, seleccione ambas fechas.",
+    "selectafter": "La fecha fin no puede ser anterior a la fecha inicio.",
+    "consume": " Consumo Energético (kW/h)",
+    "action": "Se ha remitido un plan de acción para mejorar la calificación",
+    "graphic2": "Gráfica de consumo energético en KWh para los días seleccionados."
+  },
+  "WaterChart": {
+    "labels": {
+      "consume": "Consumo de Agua (m³)"
+    },
+    "options": {
+      "years": "Años",
+      "months": "Meses",
+      "days": "Días",
+      "hours": "Horas"
+    },
+    "months": {
+      "january": "Enero",
+      "february": "Febrero",
+      "march": "Marzo",
+      "april": "Abril",
+      "may": "Mayo",
+      "june": "Junio",
+      "july": "Julio",
+      "august": "Agosto",
+      "september": "Septiembre",
+      "october": "Octubre",
+      "november": "Noviembre",
+      "december": "Diciembre"
+    },
+    "days": {
+      "monday": "Lunes",
+      "tuesday": "Martes",
+      "wednesday": "Miércoles",
+      "thursday": "Jueves",
+      "friday": "Viernes",
+      "saturday": "Sábado",
+      "sunday": "Domingo"
+    }
+  },
+  "MaterialsChart": {
+    "materials": {
+      "concrete": "Hormigón",
+      "steel": "Acero",
+      "ceramics": "Cerámicos",
+      "glass": "Vidrio",
+      "plastics": "Plásticos",
+      "wood": "Madera",
+      "plaster": "Yeso",
+      "conductors": "Conductores",
+      "aluminum": "Aluminio",
+      "insulators": "Aislantes",
+      "others": "Otros"
+    },
+    "labels": {
+      "total": "% del total"
+    }
+  },
+  "ThermalDiscomfort": {
+    "labels": {
+      "within": "Dentro del rango de confort",
+      "outside": "Fuera del rango de confort",
+      "total": "del total",
+      "hours": "horas"
+    }
+  },
+  "LightingVisualComfort": {
+    "labels": {
+      "within": "Dentro del rango de confort",
+      "outside": "Fuera del rango de confort",
+      "total": "del total",
+      "hours": "horas"
+    }
+  },
+  "LifeCycleChart": {
+    "labels": {
+      "todo": "TODO",
+      "electricity": "Electricidad e iluminación",
+      "plumbing": "Fontanería",
+      "civilWorks": "Obra Civil",
+      "insulation": "Aislamiento",
+      "masonry": "Albañilería",
+      "architecture": "Arquitectura",
+      "exteriorCarpentry": "Carpintería Exterior",
+      "interiorCarpentry": "Carpintería Interior",
+      "foundations": "Cimentaciones y Contenciones",
+      "roofing": "Cubiertas",
+      "structure": "Estructura",
+      "falseCeiling": "Falso Techo",
+      "artificialStone": "Piedra Artificial",
+      "paintingCoating": "Pintura y Revestimiento",
+      "sewerage": "Saneamiento y Pluviales",
+      "flooring": "Solados",
+      "urbanization": "Urbanización",
+      "glazing": "Vidriería"
+    }
+  },
+  "UsefulLifeScenarios": {
+    "headers": {
+      "aspect": "Aspecto de diseño específico que debe abordarse",
+      "contribution": "Manera en que el aspecto de diseño puede contribuir a la adaptabilidad",
+      "score": "Puntuación"
+    },
+    "data": {
+      "aspect1": "1.1 Luz de la red de columnas",
+      "contribution1": "Mayor luz entre columnas permitirá una disposición más flexible del suelo.",
+      "aspect2": "1.2 Patrón de la fachada",
+      "contribution2": "Naves más angostas permitirán más configuraciones del espacio interior.",
+      "aspect3": "1.3 Sistema de muros interiores",
+      "contribution3": "Muros interiores no portantes permitirán introducir cambios en la planta más fácilmente.",
+      "aspect4": "1.4 Tamaño y acceso de la unidad",
+      "contribution4": "Garantizar que sea posible entrar y salir por las subdivisiones de los espacios ofrecerá más opciones de subarriendo.",
+      "aspect5": "2.1 Facilidad de acceso a los conductos de servicios",
+      "contribution5": "Se mejorará el acceso si los servicios no están integrados en la estructura del edificio.",
+      "aspect6": "2.2 Facilidad de acceso a las salas técnicas",
+      "contribution6": "Se facilitarán los futuros cambios del equipo técnico si es fácil acceder a las salas técnicas y al equipo.",
+      "aspect7": "2.3 Conductos longitudinales para las líneas de servicio",
+      "contribution7": "La inclusión de conductos longitudinales aportará flexibilidad en la ubicación de los puntos de servicio.",
+      "aspect8": "2.4 Techos más altos para las líneas de servicio",
+      "contribution8": "El uso de mayores alturas en los techos proporcionará más flexibilidad en el enrutamiento de servicios.",
+      "aspect9": "2.5 Servicios para las subdivisiones",
+      "contribution9": "Garantizar que la prestación de servicios individuales para las instalaciones sanitarias sea posible para las subdivisiones de los espacios ofrecerá más opciones de subarriendo.",
+      "aspect10": "3.1 Fachadas no portantes",
+      "contribution10": "Las fachadas no portantes permitirán introducir cambios más fácilmente en las distribuciones internas y los elementos externos.",
+      "aspect11": "3.2 Preparar la capacidad portante para el futuro",
+      "contribution11": "La incorporación de una capacidad portante redundante facilitará los posibles cambios futuros en la fachada y los usos del edificio.",
+      "aspect12": "3.3 Diseño estructural que permita futuras ampliaciones",
+      "contribution12": "Los diseños estructurales con fuerza vertical para soportar plantas adicionales permitirán futuras ampliaciones de la superficie.",
+      "total": "TOTAL"
+    }
+  }
+}
