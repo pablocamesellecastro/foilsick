@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useCartStore } from "@/zustand/cartStorage";
 import { Button } from "@/components/ui/button";
 import { handleCheckout } from "@/lib/stripe/checkout";
+import BackButton from "@/components/buttons/back-button/BackButton";
 
 import { Divide, ShoppingBagIcon, SkullIcon } from "lucide-react";
 // import Link from "next/link";
@@ -48,9 +49,7 @@ export default function CartComponent() {
     isClient && (
       <div className="w-full h-full flex flex-col space-y-4 p-4">
         <div className="flex justify-between">
-          <a href="/" className="text-2xl">
-            ←
-          </a>
+          <BackButton />
         </div>
 
         <div className="w-full flex flex-col space-y-2 overflow-y-auto flex-1">

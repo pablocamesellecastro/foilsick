@@ -1,16 +1,12 @@
 import ProductComponent from "@/components/product/ProductComponent";
 
 import { createClient } from "@/lib/server/supabase";
-import Image from "next/image";
 import CartButton from "@/app/components/buttons/cartButton/cartButton";
 
 export default async function Page() {
   const supabase = await createClient();
 
   const { data: products, error } = await supabase.from("products").select("*");
-
-  console.log("products:", products);
-  console.log("error:", error);
 
   if (error || !products) {
     console.log(error);
@@ -20,12 +16,6 @@ export default async function Page() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-
-  if (user) {
-    console.log("Usuario logueado:", user.user_metadata.full_name);
-  } else {
-    console.log("no hay usuario logueado");
-  }
 
   const sortedProducts = products.sort(
     (a, b) => a.display_index - b.display_index,

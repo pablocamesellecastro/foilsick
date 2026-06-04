@@ -15,16 +15,12 @@ export async function createClient() {
         set(name: string, value: string, options: any) {
           try {
             cookieStore.set(name, value, options);
-          } catch {
-            // Se ignora si no se puede escribir (páginas normales)
-          }
+          } catch {}
         },
         remove(name: string, options: any) {
           try {
             cookieStore.set(name, "", { ...options, maxAge: 0 });
-          } catch {
-            // Se ignora si no se puede escribir (páginas normales)
-          }
+          } catch {}
         },
       },
     },

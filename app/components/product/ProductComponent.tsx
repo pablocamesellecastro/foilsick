@@ -3,11 +3,12 @@
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import { useCartStore } from "@/zustand/cartStorage";
+import { useEffect, useState } from "react";
+import { useFavorite } from "@/components/hooks/useFavorite";
 
 export default function ProductComponent({ product }: { product: any }) {
   const { items: items_carrito, addItem } = useCartStore();
-
-  console.log(product);
+  const { favoriteIcon, loaded, handleFavorite } = useFavorite(product.id);
 
   return (
     <div className="flex flex-row lg:gap-32 py-10">
@@ -34,8 +35,27 @@ export default function ProductComponent({ product }: { product: any }) {
           </Card>
         </div>
 
-        <div>
+        <div className="flex flex-row justify-between gap-10">
           <p className="text-sm text-neutral-600">{product.description}</p>
+          <button
+            className="flex items-center gap-1"
+            onClick={() => handleFavorite()}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill={loaded && favoriteIcon === "filled" ? "black" : "none"}
+              viewBox="0 0 24 24"
+              strokeWidth={1.3}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z"
+              />
+            </svg>
+          </button>
         </div>
 
         <div className=" space-y-3 justify-between flex flex-col">
