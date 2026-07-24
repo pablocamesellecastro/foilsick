@@ -21,14 +21,7 @@ export default function SidebarFoilsick({ products }) {
 
   return (
     <aside className="w-full lg:w-72 bg-neutral-000 flex flex-col lg:sticky lg:top-0 lg:h-screen p-4 gap-4">
-      <Image
-        alt="Foilsick logo"
-        width={300}
-        height={300}
-        src="/images/logo_foilsick_black.png"
-        className="w-full h-auto"
-      />
-      <div className="flex lg:w-8 lg:flex-col gap-2 overflow-x-auto lg:overflow-visible whitespace-nowrap hover:cursor-pointer">
+      <div className="flex lg:w-8 lg:flex-col gap-2 overflow-x-auto lg:overflow-visible whitespace-nowrap hover:cursor-pointer text-neutral-800">
         <a
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="text-left hover:text-neutral-400 transition"

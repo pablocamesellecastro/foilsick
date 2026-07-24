@@ -9,18 +9,15 @@ interface PageLayoutFoilsickProps {
   products: any[];
 }
 
-export default function PageLayoutFoilsick({
-  children,
-  products,
-}: PageLayoutFoilsickProps) {
+export default function PageLayoutFoilsick({ children, products }) {
   return (
-    <div className="min-h-[100dvh] bg-neutral-000 text-black flex flex-col lg:flex-row">
+    <div className="relative min-h-[100dvh] text-black flex flex-col lg:flex-row">
       <SidebarFoilsick products={products} />
       <div className="flex flex-1 flex-col">
         <Header />
         <main
           id="main-content"
-          className="flex flex-1 justify-end bg-neutral-000 p-0 overflow-y-auto min-h-[60dvh]"
+          className="flex flex-1 justify-end p-0 overflow-y-auto min-h-[60dvh]"
         >
           {children}
         </main>

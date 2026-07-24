@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useCartStore } from "@/zustand/cartStorage";
 import CartButton from "@/components/buttons/cartButton/cartButton";
 import BackButton from "@/components/buttons/back-button/BackButton";
@@ -39,7 +38,7 @@ export default function ProductClient({ product }: { product: any }) {
   }, []);
 
   return (
-    <div className="p-6 max-w-6xl mx-auto text-black">
+    <div className="p-6   text-black">
       <div className="flex flex-row justify-between items-center">
         <BackButton />
         <CartButton />
@@ -88,12 +87,12 @@ export default function ProductClient({ product }: { product: any }) {
                 </svg>
               </button>
 
-              <button
+              <span
                 onClick={handleAddToCart}
                 className="px-6 py-3  hover:text-neutral-400 transition"
               >
                 Add to Cart
-              </button>
+              </span>
             </div>
           </div>
         </div>

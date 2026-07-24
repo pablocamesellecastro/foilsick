@@ -1,5 +1,4 @@
 import { createClient } from "@/lib/server/supabase";
-import Image from "next/image";
 import { redirect } from "next/navigation";
 import FavoriteProductCard from "@/components/product/FavoriteProductCard";
 import CartButton from "@/app/components/buttons/cartButton/cartButton";
@@ -35,33 +34,32 @@ export default async function AccountPage() {
   const email = user.email;
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
-      <div className="flex items-start justify-between mb-10">
-        <BackButton />
+    <div className="p-6 mx-auto">
+      <div className="flex justify-between mb-10">
+        <div className="flex align-top">
+          <BackButton />
+        </div>
 
-        <div className="flex items-center gap-3 text-right">
-          <div>
-            <p className="font-medium leading-none">{name}</p>
-          </div>
+        <div className="flex flex-col">
+          <p className="text-end">{name}</p>
 
-          {avatar && (
-            <Image
-              src={avatar}
-              alt="Avatar"
-              width={42}
-              height={42}
-              className="rounded-full"
-            />
-          )}
+          <form action="/auth/signout" method="post" className="text-end">
+            <button
+              type="submit"
+              className=" text-neutral-400 hover:text-black transition text-sm"
+            >
+              Sign out
+            </button>
+          </form>
         </div>
       </div>
 
       <div className="flex flex-row justify-between pb-3">
-        <h1 className="text-xl font-bold">Favorites</h1>
+        <h1 className=" text-xl font-bold">Favorites</h1>
         <CartButton />
       </div>
 
-      <div className="mb-8">
+      <div className="">
         <div className="mb-3">
           <div className="flex flex-col gap-4 mt-4">
             {products && products.length > 0 ? (
@@ -73,14 +71,6 @@ export default async function AccountPage() {
             )}
           </div>
         </div>
-        <form action="/auth/signout" method="post">
-          <button
-            type="submit"
-            className="text-neutral-400 hover:text-black transition text-sm"
-          >
-            Sign out
-          </button>
-        </form>
       </div>
     </div>
   );

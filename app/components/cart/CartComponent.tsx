@@ -1,14 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useCartStore } from "@/zustand/cartStorage";
-import { Button } from "@/components/ui/button";
 import { handleCheckout } from "@/lib/stripe/checkout";
 import BackButton from "@/components/buttons/back-button/BackButton";
-
-import { Divide, ShoppingBagIcon, SkullIcon } from "lucide-react";
-// import Link from "next/link";
-//import { product } from "@/mocks/products";
-import { AlertDialog } from "@radix-ui/react-alert-dialog";
 
 export default function CartComponent() {
   const {
@@ -47,13 +41,9 @@ export default function CartComponent() {
 
   return (
     isClient && (
-      <div className="w-full h-full flex flex-col space-y-4 p-4">
-        <div className="flex justify-between">
-          <BackButton />
-        </div>
-
-        <div className="w-full flex flex-col space-y-2 overflow-y-auto flex-1">
-          <table className="w-full table-auto text-sm">
+      <div className=" flex flex-col space-y-4">
+        <div className="flex flex-col overflow-y-auto">
+          <table className="w-full">
             <tbody>
               {groupedItems &&
                 Object.values(groupedItems).map((i: any, index) => (
@@ -80,30 +70,34 @@ export default function CartComponent() {
                     </td>
                     <td className="px-2 py-3 text-right">{i.price}</td>
                     <td className="px-2 py-3 flex justify-end">
-                      <Button
+                      <span
                         onClick={() => removeItem(i)}
-                        className="text- black bg-transparent animation-none hover:bg-transparent hover:text-black"
+                        className="cursor-pointer hover:text-neutral-400 transition"
                       >
                         X
-                      </Button>
+                      </span>
                     </td>
                   </tr>
                 ))}
-              <tr className="border-t">
-                <td className="px-2 py-3">Total</td>
-                <td className="px-2 py-3"></td>
-                <td className="px-2 py-3 text-right">{getTotal()}</td>
-                <td className="px-2 py-3 flex justify-end"></td>
-              </tr>
             </tbody>
           </table>
+
+          <div className="flex">
+            <p className="px-2 py-3">Total</p>
+            <p className="px-2 py-3">{getTotal()}</p>
+          </div>
         </div>
 
         {items_carrito && items_carrito.length === 0 ? (
-          <span className="">Cart is empty</span>
+          <div className="flex align-items-left">
+            <span className="p-2">Cart is empty</span>
+          </div>
         ) : (
           // <Button className="w-full" asChild>
-          <button onClick={() => handleCheckout(Object.values(groupedItems))}>
+          <button
+            className=""
+            onClick={() => handleCheckout(Object.values(groupedItems))}
+          >
             Proceed to checkout
           </button>
           // </Button>

@@ -1,4 +1,3 @@
-// filepath: /app/stores/useAppSettingsStore.ts
 import { create, StateCreator } from "zustand";
 import {
   StateStorage,
@@ -24,7 +23,6 @@ const CartStoreAPI: StateCreator<CartStore, [["zustand/devtools", unknown]]> = (
   set,
   get,
 ) => ({
-  //export const useCartStore = create<CartStore>((set, get) => ({
   items: [],
   active: true,
 

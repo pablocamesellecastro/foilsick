@@ -12,9 +12,9 @@ export default function CartButton() {
   return (
     <a
       href="/cart"
-      className="hover:text-neutral-400 transition flex flex-row "
+      className="hover:text-neutral-400 transition leading-none flex items-center"
     >
-      <span className="">Cart</span>
+      <span>Cart</span>
       {isClient && <span>{`(${getCount()})`}</span>}
     </a>
   );

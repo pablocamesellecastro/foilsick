@@ -1,27 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* You can add global styles to this file, and also import other style files */
 
 body {
-  font-family: "Helvetica", Arial, sans-serif;
-
-  font-size: 25px; /* tamaño */
-  font-weight: 500; /* grosor: 100-900 */
-  line-height: 1.5; /* interlineado (como en PS) */
-  letter-spacing: 0.001em; /* tracking (separación entre letras) */
-  word-spacing: 0.3px; /* separación entre palabras */
+  font-family: "Times New Roman";
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  word-spacing: 0.3px;
 }
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --background: 0 0% 88%;
+    --foreground: 0 0% 12%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
+    --primary: 0 0% 3%;
     --primary-foreground: 0 0% 98%;
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
@@ -40,14 +38,6 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-
-    --hospital-darkblue: #011f4b;
-    --hospital-middleblue: #03396c;
-    --hospital-baseblue: #00a9ce;
-    --hospital-green: #4caf50;
-    --hospital-lightgreen: #a5d6a7;
-    --hospital-lightgrey: #f5f5f5;
-    --hospital-middlegrey: #616161;
   }
   .dark {
     --background: 217, 41%, 9%;
@@ -74,14 +64,6 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-
-    --hospital-darkblue: hsl(0, 0%, 85%);
-    --hospital-middleblue: #c5c5c7;
-    --hospital-baseblue: #00a9ce;
-    --hospital-green: #4caf50;
-    --hospital-lightgreen: #a5d6a7;
-    --hospital-lightgrey: #f5f5f5;
-    --hospital-middlegrey: #616161;
   }
 }
 @layer base {

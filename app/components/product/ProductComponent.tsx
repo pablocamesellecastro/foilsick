@@ -3,7 +3,6 @@
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import { useCartStore } from "@/zustand/cartStorage";
-import { useEffect, useState } from "react";
 import { useFavorite } from "@/components/hooks/useFavorite";
 
 export default function ProductComponent({ product }: { product: any }) {
@@ -13,13 +12,13 @@ export default function ProductComponent({ product }: { product: any }) {
   return (
     <div className="flex flex-row lg:gap-32 py-10">
       <div className="hidden lg:flex items-start w-8">
-        <h1 className="text-lg text-grey font-light">
+        <h1 className="text-lg text-grey font-light text-neutral-700">
           {product.display_index.toString().padStart(2, "0")}.
         </h1>
       </div>
 
-      <main className="flex flex-col gap-3 flex-1 text-black">
-        <h1 className="text-xl uppercase ">{product.name}</h1>
+      <main className="flex flex-col gap-3 flex-1">
+        <h1 className="text-xl uppercase text-neutral-800">{product.name}</h1>
 
         <div className="flex flex-col gap-4">
           <Card className="flex items-center justify-center aspect-square">
@@ -60,8 +59,14 @@ export default function ProductComponent({ product }: { product: any }) {
 
         <div className=" space-y-3 justify-between flex flex-col">
           <div className="flex items-center justify-between">
-            <span className="text-lg font-semibold">{product.price} EUR</span>
-            <a onClick={() => addItem(product)} href="#" className="">
+            <span className="text-lg font-semibold text-neutral-800">
+              {product.price} EUR
+            </span>
+            <a
+              onClick={() => addItem(product)}
+              href="#"
+              className="text-neutral-800"
+            >
               Add to Cart
             </a>
           </div>

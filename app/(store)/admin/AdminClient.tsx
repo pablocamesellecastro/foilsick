@@ -23,6 +23,14 @@ interface Props {
 
 export default function AdminClient({ products }: Props) {
   const [sortedProducts, setSortedProducts] = useState<Product[]>(products);
+  const [Name, setName] = useState("");
+  const [Description, setDescription] = useState("");
+  const [Price, setPrice] = useState("");
+  const [file, setFile] = useState<File | null>(null);
+  const [Size, setSize] = useState("");
+  const [Genre, setGenre] = useState("");
+  const [Audio, setAudio] = useState("");
+  const [DisplayIndex, setDisplayIndex] = useState("");
 
   const deleteProduct = async (id: string, image_path: string) => {
     console.log("Deleting image:", image_path);
@@ -68,15 +76,6 @@ export default function AdminClient({ products }: Props) {
 
     setSortedProducts(sorted);
   };
-
-  const [Name, setName] = useState("");
-  const [Description, setDescription] = useState("");
-  const [Price, setPrice] = useState("");
-  const [file, setFile] = useState<File | null>(null);
-  const [Size, setSize] = useState("");
-  const [Genre, setGenre] = useState("");
-  const [Audio, setAudio] = useState("");
-  const [DisplayIndex, setDisplayIndex] = useState("");
 
   const uploadImage = async (file: File) => {
     const fileName = `${Date.now()}-${file.name}`;
