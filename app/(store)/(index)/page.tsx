@@ -23,9 +23,6 @@ export default async function Page() {
 
   return (
     <div className="p-3 w-full lg:w-7/12 h-full">
-      <div className="flex flex-row justify-end pb-4">
-        <CartButton />
-      </div>
       <div>
         <p className="lg:pl-40 text-justify text-neutral-700">
           Foilsick is a curated collection of digital products for music

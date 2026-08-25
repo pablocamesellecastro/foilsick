@@ -3,7 +3,6 @@ import { ThemeProvider } from "@/app/components/providers/ThemeProvider";
 import "@/app/styles/globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { Cormorant_Garamond } from "next/font/google";
 
 export default async function RootLayout({
   children,

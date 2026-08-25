@@ -20,7 +20,7 @@ export default function SidebarFoilsick({ products }) {
   );
 
   return (
-    <aside className="w-full lg:w-72 bg-neutral-000 flex flex-col lg:sticky lg:top-0 lg:h-screen p-4 gap-4">
+    <aside className="w-full lg:w-72 bg-neutral-000 flex flex-col sticky top-12 z-40 lg:h-[calc(100vh-3rem)] p-4 gap-4">
       <div className="flex lg:w-8 lg:flex-col gap-2 overflow-x-auto lg:overflow-visible whitespace-nowrap hover:cursor-pointer text-neutral-800">
         <a
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

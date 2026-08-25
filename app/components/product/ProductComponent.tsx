@@ -62,13 +62,12 @@ export default function ProductComponent({ product }: { product: any }) {
             <span className="text-lg font-semibold text-neutral-800">
               {product.price} EUR
             </span>
-            <a
+            <button
               onClick={() => addItem(product)}
-              href="#"
               className="text-neutral-800"
             >
               Add to Cart
-            </a>
+            </button>
           </div>
           <div className="justify-between text-sm text-neutral-400 grid grid-cols-2 gap-y-2">
             <span>Size:</span>{" "}

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { createBrowserSupabaseClient } from "@/lib/supabaseBrowser";
+import CartButton from "./buttons/cartButton/cartButton";
 
 export default function Header() {
   const [user, setUser] = useState<any>(null);
@@ -13,20 +14,35 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="flex items-center justify-end p-4">
-      {user ? (
-        <a href="/account">My Account</a>
-      ) : (
-        <div className="flex gap-2">
-          <a href="/login" className="hover:text-neutral-400 transition">
-            Sign In
+    <header className="flex justify-between items-center pl-2 pr-2 sticky top-0 z-50 h-12">
+      <Image
+        src="/images/Foilsick_logo_test_3.png"
+        alt="Foilsick logo"
+        width={150}
+        height={150}
+        className="h-12 w-auto"
+      />
+      <div className="flex flex-col items-end justify-end p-3 bg-background">
+        {user ? (
+          <a
+            href="/account"
+            className="hover:text-neutral-400 transition leading-none flex items-center"
+          >
+            My Account
           </a>
-          <span className="text-neutral-400">/</span>
-          <a href="/register" className="hover:text-neutral-400 transition">
-            Sign Up
-          </a>
-        </div>
-      )}
+        ) : (
+          <div className="flex gap-2">
+            <a href="/login" className="hover:text-neutral-400 transition">
+              Sign In
+            </a>
+            <span className="text-neutral-400">/</span>
+            <a href="/register" className="hover:text-neutral-400 transition">
+              Sign Up
+            </a>
+          </div>
+        )}
+        <CartButton />
+      </div>
     </header>
   );
 }

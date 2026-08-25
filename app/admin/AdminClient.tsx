@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { supabase } from "@/lib/server/supabaseClient";
 
 interface Product {
@@ -31,10 +31,12 @@ export default function AdminClient({ products }: Props) {
   const [Genre, setGenre] = useState("");
   const [Audio, setAudio] = useState("");
   const [DisplayIndex, setDisplayIndex] = useState("");
+  const [zipFile, setZipFile] = useState<File | null>(null);
+  const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+  const [newImageFile, setNewImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const deleteProduct = async (id: string, image_path: string) => {
-    console.log("Deleting image:", image_path);
-
     const { error: storageError } = await supabase.storage
       .from("products-images")
       .remove([image_path]);
@@ -43,8 +45,6 @@ export default function AdminClient({ products }: Props) {
       console.error("Error deleting image:", storageError.message);
       return;
     }
-
-    console.log(storageError);
 
     const { error } = await supabase.from("products").delete().eq("id", id);
 
@@ -102,15 +102,10 @@ export default function AdminClient({ products }: Props) {
     if (!file) return console.log("No image selected");
     if (!zipFile) return console.log("No zip selected");
 
-    // image upload ________________________________________________________________________________________________
-
     const uploadData = await uploadImage(file);
-
     if (!uploadData) return;
 
     const { imageUrl, imagePath } = uploadData;
-
-    // zip upload ________________________________________________________________________________________________
 
     const zipFileName = `${Date.now()}-${zipFile.name}`;
     const { error: zipError } = await supabase.storage
@@ -138,18 +133,94 @@ export default function AdminClient({ products }: Props) {
       })
       .select();
 
-    console.log("DATA:", data);
-    console.log("ERROR:", error);
-
     if (error) {
       console.error(error);
       return;
     }
 
-    console.log("Product created");
+    console.log("Product created", data);
   };
 
-  const [zipFile, setZipFile] = useState<File | null>(null);
+  const replaceImage = async (file: File, oldImagePath: string) => {
+    const fileName = `${Date.now()}-${file.name}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from("products-images")
+      .upload(fileName, file);
+
+    if (uploadError) {
+      console.error("Error uploading new image:", uploadError.message);
+      return null;
+    }
+
+    const { error: deleteError } = await supabase.storage
+      .from("products-images")
+      .remove([oldImagePath]);
+
+    if (deleteError) {
+      console.warn("No se pudo borrar la imagen antigua:", deleteError.message);
+    }
+
+    const { data } = supabase.storage
+      .from("products-images")
+      .getPublicUrl(fileName);
+
+    return { imageUrl: data.publicUrl, imagePath: fileName };
+  };
+
+  const updateProduct = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!editingProduct) return;
+
+    let imageUrl = editingProduct.image;
+    let imagePath = editingProduct.image_path;
+
+    if (newImageFile) {
+      const result = await replaceImage(
+        newImageFile,
+        editingProduct.image_path,
+      );
+
+      if (!result) return;
+      imageUrl = result.imageUrl;
+      imagePath = result.imagePath;
+    }
+
+    const { error } = await supabase
+      .from("products")
+      .update({
+        name: editingProduct.name,
+        description: editingProduct.description,
+        price: editingProduct.price,
+        size: editingProduct.size,
+        genre: editingProduct.genre,
+        audio: editingProduct.audio,
+        display_index: editingProduct.display_index,
+        image: imageUrl,
+        image_path: imagePath,
+      })
+      .eq("id", editingProduct.id);
+
+    if (error) {
+      console.error("Error updating product:", error.message);
+      return;
+    }
+
+    const updatedProduct = {
+      ...editingProduct,
+      image: imageUrl,
+      image_path: imagePath,
+    };
+
+    setSortedProducts((prev) =>
+      prev.map((p) => (p.id === editingProduct.id ? updatedProduct : p)),
+    );
+
+    setEditingProduct(null);
+    setNewImageFile(null);
+    setImagePreview(null);
+  };
 
   return (
     <div className="p-8 bg-white min-h-screen">
@@ -175,64 +246,54 @@ export default function AdminClient({ products }: Props) {
             placeholder="Name"
             className="border border-gray-300 rounded-lg p-3"
           />
-
           <input
             value={Description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Description"
             className="border border-gray-300 rounded-lg p-3"
           />
-
           <input
             value={Price}
             onChange={(e) => setPrice(e.target.value)}
             placeholder="Price"
             className="border border-gray-300 rounded-lg p-3"
           />
-
           <input
             type="file"
             accept="image/*"
             onChange={(e) => setFile(e.target.files?.[0] || null)}
           />
-
           <input
             value={Size}
             onChange={(e) => setSize(e.target.value)}
             placeholder="Size"
             className="border border-gray-300 rounded-lg p-3"
           />
-
           <input
             value={Genre}
             onChange={(e) => setGenre(e.target.value)}
             placeholder="Genre"
             className="border border-gray-300 rounded-lg p-3"
           />
-
           <input
             value={Audio}
             onChange={(e) => setAudio(e.target.value)}
             placeholder="Audio (Soundcloud Link)"
             className="border border-gray-300 rounded-lg p-3"
           />
-
           <input
             value={DisplayIndex}
             onChange={(e) => setDisplayIndex(e.target.value)}
             placeholder="Display Index"
             className="border border-gray-300 rounded-lg p-3"
           />
-
           <input
             type="file"
             accept=".zip"
             onChange={(e) => setZipFile(e.target.files?.[0] || null)}
           />
 
-          <button type="submit" onSubmit={createProduct}>
-            Create Product
-          </button>
+          <button type="submit">Create Product</button>
         </form>
       </section>
 
@@ -254,7 +315,7 @@ export default function AdminClient({ products }: Props) {
 
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
-            <thead className="">
+            <thead>
               <tr>
                 {["Product", "Price", "Description", "Date"].map((header) => (
                   <th
@@ -284,8 +345,11 @@ export default function AdminClient({ products }: Props) {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
                     {product.created_at.split("T")[0].replaceAll("-", "/")}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">
-                    <button className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-lg transition-colors">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm">
+                    <button
+                      onClick={() => setEditingProduct(product)}
+                      className="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-lg transition-colors"
+                    >
                       Edit
                     </button>
                   </td>
@@ -294,7 +358,7 @@ export default function AdminClient({ products }: Props) {
                       onClick={() =>
                         deleteProduct(product.id, product.image_path)
                       }
-                      className="bg-red-600  text-white font-bold py-2 px-4 rounded-lg transition-colors"
+                      className="bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition-colors"
                     >
                       Delete
                     </button>
@@ -305,6 +369,138 @@ export default function AdminClient({ products }: Props) {
           </table>
         </div>
       </section>
+
+      {editingProduct && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-6 w-full max-w-lg shadow-xl">
+            <h2 className="text-xl font-semibold mb-4 text-black">
+              Editar producto
+            </h2>
+
+            <form onSubmit={updateProduct} className="flex flex-col gap-3">
+              <div className="flex flex-col gap-2">
+                <label className="text-sm text-black font-medium">
+                  Imagen del producto
+                </label>
+
+                <img
+                  src={imagePreview || editingProduct.image}
+                  alt={editingProduct.name}
+                  className="w-32 h-32 object-cover rounded-lg border border-gray-300"
+                />
+
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const selectedFile = e.target.files?.[0] || null;
+                    setNewImageFile(selectedFile);
+
+                    if (selectedFile) {
+                      if (imagePreview) URL.revokeObjectURL(imagePreview);
+                      setImagePreview(URL.createObjectURL(selectedFile));
+                    }
+                  }}
+                />
+              </div>
+
+              <input
+                value={editingProduct.name}
+                onChange={(e) =>
+                  setEditingProduct({ ...editingProduct, name: e.target.value })
+                }
+                placeholder="Name"
+                className="border border-gray-300 rounded-lg p-3"
+              />
+              <input
+                value={editingProduct.description}
+                onChange={(e) =>
+                  setEditingProduct({
+                    ...editingProduct,
+                    description: e.target.value,
+                  })
+                }
+                placeholder="Description"
+                className="border border-gray-300 rounded-lg p-3"
+              />
+              <input
+                type="number"
+                value={editingProduct.price}
+                onChange={(e) =>
+                  setEditingProduct({
+                    ...editingProduct,
+                    price: parseFloat(e.target.value),
+                  })
+                }
+                placeholder="Price"
+                className="border border-gray-300 rounded-lg p-3"
+              />
+              <input
+                value={editingProduct.size}
+                onChange={(e) =>
+                  setEditingProduct({ ...editingProduct, size: e.target.value })
+                }
+                placeholder="Size"
+                className="border border-gray-300 rounded-lg p-3"
+              />
+              <input
+                value={editingProduct.genre}
+                onChange={(e) =>
+                  setEditingProduct({
+                    ...editingProduct,
+                    genre: e.target.value,
+                  })
+                }
+                placeholder="Genre"
+                className="border border-gray-300 rounded-lg p-3"
+              />
+              <input
+                value={editingProduct.audio}
+                onChange={(e) =>
+                  setEditingProduct({
+                    ...editingProduct,
+                    audio: e.target.value,
+                  })
+                }
+                placeholder="Audio (Soundcloud Link)"
+                className="border border-gray-300 rounded-lg p-3"
+              />
+              <input
+                type="number"
+                value={editingProduct.display_index}
+                onChange={(e) =>
+                  setEditingProduct({
+                    ...editingProduct,
+                    display_index: parseInt(e.target.value),
+                  })
+                }
+                placeholder="Display Index"
+                className="border border-gray-300 rounded-lg p-3"
+              />
+
+              <div className="flex justify-end gap-3 mt-4">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEditingProduct(null);
+                    setNewImageFile(null);
+                    setImagePreview(null);
+                  }}
+                  className="px-4 py-2 rounded-lg border border-gray-300 text-black"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 rounded-lg bg-black text-white font-bold"
+                >
+                  Guardar cambios
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

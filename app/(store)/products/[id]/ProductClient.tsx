@@ -39,11 +39,6 @@ export default function ProductClient({ product }: { product: any }) {
 
   return (
     <div className="p-6   text-black">
-      <div className="flex flex-row justify-between items-center">
-        <BackButton />
-        <CartButton />
-      </div>
-
       <div className="grid lg:grid-cols-2 gap-14 mt-8">
         <div className="relative aspect-square overflow-hidden">
           <Image
