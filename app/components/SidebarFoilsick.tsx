@@ -20,7 +20,7 @@ export default function SidebarFoilsick({ products }) {
   );
 
   return (
-    <aside className="w-full lg:w-72 bg-neutral-000 flex flex-col sticky top-12 z-40 lg:h-[calc(100vh-3rem)] p-4 gap-4">
+    <aside className="w-full lg:w-72 bg-neutral-000 flex flex-col sticky top-12 z-40 lg:h-[calc(100vh-3rem)] p-4 gap-4 ">
       <div className="flex lg:w-8 lg:flex-col gap-2 overflow-x-auto lg:overflow-visible whitespace-nowrap hover:cursor-pointer text-neutral-800">
         <a
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -38,11 +38,6 @@ export default function SidebarFoilsick({ products }) {
             {formatIndex(product.display_index)}
           </a>
         ))}
-      </div>
-      <div className=" mt-auto flex lg:w-8 lg:flex-row gap-2 overflow-x-auto lg:overflow-visible whitespace-nowrap ">
-        <p className=" flex text-neutral-400 text-center italic font-light text-s cursor-default ">
-          © 2026 Foilsick. All rights reserved.
-        </p>
       </div>
     </aside>
   );

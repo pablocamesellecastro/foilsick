@@ -47,7 +47,10 @@ export default function CartComponent() {
             <tbody>
               {groupedItems &&
                 Object.values(groupedItems).map((i: any, index) => (
-                  <tr key={"carrito_" + index} className="border-t">
+                  <tr
+                    key={"carrito_" + index}
+                    className="border-t border-neutral-400"
+                  >
                     <td className="px-2 py-3">
                       <a href={`/products/${i.id}`} className="">
                         {i.name}
@@ -69,7 +72,7 @@ export default function CartComponent() {
                       </select>
                     </td>
                     <td className="px-2 py-3 text-right">{i.price}</td>
-                    <td className="px-2 py-3 flex justify-end">
+                    <td className="px-2 py-3 text-right">
                       <span
                         onClick={() => removeItem(i)}
                         className="cursor-pointer hover:text-neutral-400 transition"
@@ -80,12 +83,15 @@ export default function CartComponent() {
                   </tr>
                 ))}
             </tbody>
+            <tfoot>
+              <tr className="border-t border-neutral-400">
+                <td className="px-2 py-3">Total</td>
+                <td></td>
+                <td className="px-2 py-3 text-right">€{getTotal()}</td>
+                <td></td>
+              </tr>
+            </tfoot>
           </table>
-
-          <div className="flex">
-            <p className="px-2 py-3">Total</p>
-            <p className="px-2 py-3">{getTotal()}</p>
-          </div>
         </div>
 
         {items_carrito && items_carrito.length === 0 ? (
@@ -95,8 +101,8 @@ export default function CartComponent() {
         ) : (
           // <Button className="w-full" asChild>
           <button
-            className=""
             onClick={() => handleCheckout(Object.values(groupedItems))}
+            className=" self-center px-2 py-3 text-sm transition hover:text-neutral-400"
           >
             Proceed to checkout
           </button>

@@ -10,7 +10,7 @@ interface PageLayoutFoilsickProps {
 
 export default function PageLayoutFoilsick({ children, products }) {
   return (
-    <div className="relative min-h-[100dvh] text-black flex flex-col lg:flex-row">
+    <div className="relative min-h-[100dvh] text-black flex flex-col lg:flex-row bg-background">
       <SidebarFoilsick products={products} />
       <div className="flex flex-1 flex-col">
         <main

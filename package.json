@@ -65,6 +65,7 @@
     "react-day-picker": "^8.10.1",
     "react-dom": "^18",
     "react-hook-form": "^7.55.0",
+    "react-icons": "^5.7.0",
     "recharts": "^2.15.1",
     "resend": "^6.12.3",
     "shadcn": "^2.4.0-canary.17",

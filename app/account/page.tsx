@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import FavoriteProductCard from "@/components/product/FavoriteProductCard";
 import CartButton from "@/app/components/buttons/cartButton/cartButton";
 import BackButton from "@/app/components/buttons/back-button/BackButton";
+import Link from "next/link";
+import Image from "next/image";
 
 export default async function AccountPage() {
   const supabase = await createClient();
@@ -10,7 +12,7 @@ export default async function AccountPage() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) redirect("/login");
+  if (!user) redirect("/signin");
 
   // Favoritos
   const { data: favs, error } = await supabase
@@ -34,13 +36,23 @@ export default async function AccountPage() {
   const email = user.email;
 
   return (
-    <div className="p-6 mx-auto">
-      <div className="flex justify-between mb-10">
-        <div className="flex align-top">
-          <BackButton />
-        </div>
+    <div className="">
+      <div className="flex justify-between mb-10  bg-neutral-0 text-black">
+        <Link
+          href="/"
+          aria-label="Volver a la página inicial"
+          className="flex justify-between items-center pr-2 sticky top-0 z-50 h-12 pl-2"
+        >
+          <Image
+            src="/images/Foilsick_logo_test_3.png"
+            alt="Foilsick logo"
+            width={150}
+            height={150}
+            className=""
+          />
+        </Link>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col pt-1 pr-2">
           <p className="text-end">{name}</p>
 
           <form action="/auth/signout" method="post" className="text-end">
@@ -54,12 +66,12 @@ export default async function AccountPage() {
         </div>
       </div>
 
-      <div className="flex flex-row justify-between pb-3">
+      <div className="flex flex-row justify-between p-3">
         <h1 className=" text-xl font-bold">Favorites</h1>
         <CartButton />
       </div>
 
-      <div className="">
+      <div className="p-3">
         <div className="mb-3">
           <div className="flex flex-col gap-4 mt-4">
             {products && products.length > 0 ? (

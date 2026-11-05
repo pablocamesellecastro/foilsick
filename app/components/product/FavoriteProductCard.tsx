@@ -21,7 +21,11 @@ export default function FavoriteProductCard({ product }: { product: any }) {
         <a href={`/products/${product.id}`} className="">
           {product.name}
         </a>
-        <a onClick={() => addItem(product)} href="#" className="items-center">
+        <a
+          onClick={() => addItem(product)}
+          href="#"
+          className="items-center transition hover:text-neutral-400"
+        >
           Add to Cart
         </a>
       </div>

@@ -1,25 +1,18 @@
 import ProductComponent from "@/components/product/ProductComponent";
-
 import { createClient } from "@/lib/server/supabase";
-import CartButton from "@/app/components/buttons/cartButton/cartButton";
 
 export default async function Page() {
   const supabase = await createClient();
 
-  const { data: products, error } = await supabase.from("products").select("*");
+  const { data: products, error } = await supabase
+    .from("products")
+    .select("*")
+    .order("display_index", { ascending: true });
 
   if (error || !products) {
-    console.log(error);
+    console.error(error);
     return <div>Error cargando productos</div>;
   }
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  const sortedProducts = products.sort(
-    (a, b) => a.display_index - b.display_index,
-  );
 
   return (
     <div className="p-3 w-full lg:w-7/12 h-full">
@@ -37,7 +30,8 @@ export default async function Page() {
           contemporary sound design.
         </p>
       </div>
-      {sortedProducts.map((product: any) => (
+
+      {products.map((product) => (
         <div
           className="scroll-smooth"
           key={product.id}

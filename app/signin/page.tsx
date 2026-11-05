@@ -4,7 +4,7 @@ import { createBrowserSupabaseClient } from "../../lib/supabaseBrowser";
 
 const supabase = createBrowserSupabaseClient();
 
-export default function LoginPage() {
+export default function SigninPage() {
   //__________________________________________________________________________________
 
   const handleGoogleSignIn = async () => {
@@ -46,9 +46,9 @@ export default function LoginPage() {
     <div className="flex flex-col gap-4 p-8 max-w-sm mx-auto">
       <button
         onClick={handleGoogleSignIn}
-        className="border px-4 py-2 hover:text-neutral-400 transition"
+        className=" px-4 py-2 hover:text-neutral-400 transition"
       >
-        Continuar con Google
+        Continue with Google
       </button>
     </div>
   );

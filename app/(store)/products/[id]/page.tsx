@@ -1,9 +1,8 @@
-"use server";
-
 import { notFound } from "next/navigation";
 
 import { supabase } from "@/lib/server/supabaseClient";
 import ProductClient from "./ProductClient";
+import RelatedProducts from "@/app/components/product/RelatedProducts";
 
 export default async function ProductPage({
   params,
@@ -20,5 +19,16 @@ export default async function ProductPage({
 
   if (error || !product) return notFound();
 
-  return <ProductClient product={product} />;
+  const { data: related } = await supabase
+    .from("products")
+    .select("*")
+    .neq("id", id)
+    .limit(6);
+
+  return (
+    <>
+      <ProductClient product={product} />
+      <RelatedProducts products={related ?? []} />
+    </>
+  );
 }
